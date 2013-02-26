@@ -1,0 +1,27 @@
+*******************************
+*         source code         *
+*******************************
+./src:
+	placementAlgorithms.h
+	placementAlgorithms.cpp
+	simulator.cpp
+
+*******************************
+*       execution file        *
+*******************************
+./executable:
+	simulator.exe
+
+*******************************
+*  sample input/output files  *
+*******************************
+./executable:
+	test_case.conf : a sample test scenario file used to run the simulator.
+	test_result.txt : a sample output file resulted from test_case.conf.
+
+*******************************
+*          documents          *
+*******************************
+./documents:
+	specification.pdf : about the purpose and design of the program and how to configur/run it.
+	test_report.pdf : comparing the four algorithms by analyzing test results.

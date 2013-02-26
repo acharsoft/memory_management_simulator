@@ -1,0 +1,64 @@
+FIRST_FIT
+alloc 1 12:    AAAAAAAAAAAA----------------------------------------------------------------------------------------
+alloc 2 4:     AAAAAAAAAAAABBBB------------------------------------------------------------------------------------
+alloc 3 8:     AAAAAAAAAAAABBBBCCCCCCCC----------------------------------------------------------------------------
+alloc 4 15:    AAAAAAAAAAAABBBBCCCCCCCCDDDDDDDDDDDDDDD-------------------------------------------------------------
+alloc 5 24:    AAAAAAAAAAAABBBBCCCCCCCCDDDDDDDDDDDDDDDEEEEEEEEEEEEEEEEEEEEEEEE-------------------------------------
+free 4:        AAAAAAAAAAAABBBBCCCCCCCC---------------EEEEEEEEEEEEEEEEEEEEEEEE-------------------------------------
+alloc 6 10:    AAAAAAAAAAAABBBBCCCCCCCCFFFFFFFFFF-----EEEEEEEEEEEEEEEEEEEEEEEE-------------------------------------
+alloc 7 11:    AAAAAAAAAAAABBBBCCCCCCCCFFFFFFFFFF-----EEEEEEEEEEEEEEEEEEEEEEEEGGGGGGGGGGG--------------------------
+free 1:        ------------BBBBCCCCCCCCFFFFFFFFFF-----EEEEEEEEEEEEEEEEEEEEEEEEGGGGGGGGGGG--------------------------
+alloc 8 6:     HHHHHH------BBBBCCCCCCCCFFFFFFFFFF-----EEEEEEEEEEEEEEEEEEEEEEEEGGGGGGGGGGG--------------------------
+alloc 9 4:     HHHHHHIIII--BBBBCCCCCCCCFFFFFFFFFF-----EEEEEEEEEEEEEEEEEEEEEEEEGGGGGGGGGGG--------------------------
+free 2:        HHHHHHIIII------CCCCCCCCFFFFFFFFFF-----EEEEEEEEEEEEEEEEEEEEEEEEGGGGGGGGGGG--------------------------
+alloc 10 3:    HHHHHHIIIIJJJ---CCCCCCCCFFFFFFFFFF-----EEEEEEEEEEEEEEEEEEEEEEEEGGGGGGGGGGG--------------------------
+
+
+NEXT_FIT
+alloc 1 12:    AAAAAAAAAAAA----------------------------------------------------------------------------------------
+alloc 2 4:     AAAAAAAAAAAABBBB------------------------------------------------------------------------------------
+alloc 3 8:     AAAAAAAAAAAABBBBCCCCCCCC----------------------------------------------------------------------------
+alloc 4 15:    AAAAAAAAAAAABBBBCCCCCCCCDDDDDDDDDDDDDDD-------------------------------------------------------------
+alloc 5 24:    AAAAAAAAAAAABBBBCCCCCCCCDDDDDDDDDDDDDDDEEEEEEEEEEEEEEEEEEEEEEEE-------------------------------------
+free 4:        AAAAAAAAAAAABBBBCCCCCCCC---------------EEEEEEEEEEEEEEEEEEEEEEEE-------------------------------------
+alloc 6 10:    AAAAAAAAAAAABBBBCCCCCCCC---------------EEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFFF---------------------------
+alloc 7 11:    AAAAAAAAAAAABBBBCCCCCCCC---------------EEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFFFGGGGGGGGGGG----------------
+free 1:        ------------BBBBCCCCCCCC---------------EEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFFFGGGGGGGGGGG----------------
+alloc 8 6:     ------------BBBBCCCCCCCC---------------EEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFFFGGGGGGGGGGGHHHHHH----------
+alloc 9 4:     ------------BBBBCCCCCCCC---------------EEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFFFGGGGGGGGGGGHHHHHHIIII------
+free 2:        ----------------CCCCCCCC---------------EEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFFFGGGGGGGGGGGHHHHHHIIII------
+alloc 10 3:    ----------------CCCCCCCC---------------EEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFFFGGGGGGGGGGGHHHHHHIIIIJJJ---
+
+
+BEST_FIT
+alloc 1 12:    AAAAAAAAAAAA----------------------------------------------------------------------------------------
+alloc 2 4:     AAAAAAAAAAAABBBB------------------------------------------------------------------------------------
+alloc 3 8:     AAAAAAAAAAAABBBBCCCCCCCC----------------------------------------------------------------------------
+alloc 4 15:    AAAAAAAAAAAABBBBCCCCCCCCDDDDDDDDDDDDDDD-------------------------------------------------------------
+alloc 5 24:    AAAAAAAAAAAABBBBCCCCCCCCDDDDDDDDDDDDDDDEEEEEEEEEEEEEEEEEEEEEEEE-------------------------------------
+free 4:        AAAAAAAAAAAABBBBCCCCCCCC---------------EEEEEEEEEEEEEEEEEEEEEEEE-------------------------------------
+alloc 6 10:    AAAAAAAAAAAABBBBCCCCCCCCFFFFFFFFFF-----EEEEEEEEEEEEEEEEEEEEEEEE-------------------------------------
+alloc 7 11:    AAAAAAAAAAAABBBBCCCCCCCCFFFFFFFFFF-----EEEEEEEEEEEEEEEEEEEEEEEEGGGGGGGGGGG--------------------------
+free 1:        ------------BBBBCCCCCCCCFFFFFFFFFF-----EEEEEEEEEEEEEEEEEEEEEEEEGGGGGGGGGGG--------------------------
+alloc 8 6:     HHHHHH------BBBBCCCCCCCCFFFFFFFFFF-----EEEEEEEEEEEEEEEEEEEEEEEEGGGGGGGGGGG--------------------------
+alloc 9 4:     HHHHHH------BBBBCCCCCCCCFFFFFFFFFFIIII-EEEEEEEEEEEEEEEEEEEEEEEEGGGGGGGGGGG--------------------------
+free 2:        HHHHHH----------CCCCCCCCFFFFFFFFFFIIII-EEEEEEEEEEEEEEEEEEEEEEEEGGGGGGGGGGG--------------------------
+alloc 10 3:    HHHHHHJJJ-------CCCCCCCCFFFFFFFFFFIIII-EEEEEEEEEEEEEEEEEEEEEEEEGGGGGGGGGGG--------------------------
+
+
+WORST_FIT
+alloc 1 12:    AAAAAAAAAAAA----------------------------------------------------------------------------------------
+alloc 2 4:     AAAAAAAAAAAABBBB------------------------------------------------------------------------------------
+alloc 3 8:     AAAAAAAAAAAABBBBCCCCCCCC----------------------------------------------------------------------------
+alloc 4 15:    AAAAAAAAAAAABBBBCCCCCCCCDDDDDDDDDDDDDDD-------------------------------------------------------------
+alloc 5 24:    AAAAAAAAAAAABBBBCCCCCCCCDDDDDDDDDDDDDDDEEEEEEEEEEEEEEEEEEEEEEEE-------------------------------------
+free 4:        AAAAAAAAAAAABBBBCCCCCCCC---------------EEEEEEEEEEEEEEEEEEEEEEEE-------------------------------------
+alloc 6 10:    AAAAAAAAAAAABBBBCCCCCCCC---------------EEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFFF---------------------------
+alloc 7 11:    AAAAAAAAAAAABBBBCCCCCCCC---------------EEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFFFGGGGGGGGGGG----------------
+free 1:        ------------BBBBCCCCCCCC---------------EEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFFFGGGGGGGGGGG----------------
+alloc 8 6:     ------------BBBBCCCCCCCC---------------EEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFFFGGGGGGGGGGGHHHHHH----------
+alloc 9 4:     ------------BBBBCCCCCCCCIIII-----------EEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFFFGGGGGGGGGGGHHHHHH----------
+free 2:        ----------------CCCCCCCCIIII-----------EEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFFFGGGGGGGGGGGHHHHHH----------
+alloc 10 3:    JJJ-------------CCCCCCCCIIII-----------EEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFFFGGGGGGGGGGGHHHHHH----------
+
+
