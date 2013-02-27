@@ -7,21 +7,15 @@
 	simulator.cpp
 
 *******************************
-*       execution file        *
-*******************************
-./executable:
-	simulator.exe
-
-*******************************
 *  sample input/output files  *
 *******************************
-./executable:
+./conf:
 	test_case.conf : a sample test scenario file used to run the simulator.
 	test_result.txt : a sample output file resulted from test_case.conf.
 
 *******************************
 *          documents          *
 *******************************
-./documents:
+./doc:
 	specification.pdf : about the purpose and design of the program and how to configur/run it.
-	test_report.pdf : comparing the four algorithms by analyzing test results.
+	test report.pdf : comparing the four algorithms by analyzing test results.
