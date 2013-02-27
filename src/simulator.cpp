@@ -132,7 +132,7 @@ int main(int argc, char* argv[])
 	// read allocation/deallocation requests from file
 	if(argc < 3) {
 		cerr << "Error: no file specified. " << endl;
-		cerr << "Usage: MmoryManagement.exe input_requests_file output_file" << endl;
+		cerr << "Usage: " << argv[0] << " requests.conf output_file" << endl;
 		return -1;
 	}
 	ifstream requests_file(argv[1]);
