@@ -1,24 +1,14 @@
 #include "placementAlgorithms.h"
 
-list<mem_block> free_blocks;	// a list of free memory blocks.
-list<mem_block> used_blocks;	// a list of used memory blocks.
-static int prev_alloc_block;	// the start address of the last allocation (allocated to the latest process), 
-								// only useful for next_fit algorithm
-static int max_memory_size = 0;	// maximum available memory size
-
-
-bool sort_by_address (mem_block& first, mem_block& second)
-{
+bool Memory::sort_by_address (mem_block& first, mem_block& second){
 	return first.address<second.address;
 }
 
-bool sort_by_size_asceding (mem_block& first, mem_block& second)
-{
+bool Memory::sort_by_size_asceding (mem_block& first, mem_block& second){
 	return first.size<second.size;
 }
 
-bool sort_by_size_desceding (mem_block& first, mem_block& second)
-{
+bool Memory::sort_by_size_desceding (mem_block& first, mem_block& second){
 	return first.size>second.size;
 }
 
@@ -34,21 +24,19 @@ bool sort_by_size_desceding (mem_block& first, mem_block& second)
 	Return value:
 		0 is returned if success, ALLOC_ERROR otherwise.
 */
-int alloc_memory(alloc_algorithm algorithm, int proc, int size)
-{
+int Memory::alloc_memory(alloc_algorithm algorithm, int proc, int size){
 	if((size > max_memory_size) || (size < 0)) 
 		return ALLOC_ERROR;
 	
 	// sort free_blocks before searching
 	list<mem_block>::iterator it;
 	switch(algorithm) {
-
 		case first_fit: 
-			free_blocks.sort(sort_by_address);
+			free_blocks.sort(Memory::sort_by_address);
 			break;
 
 		case next_fit: 
-			free_blocks.sort(sort_by_address);
+			free_blocks.sort(Memory::sort_by_address);
 			it = free_blocks.begin();
 			while(it->address < prev_alloc_block) {
 				free_blocks.push_back(*it);
@@ -58,16 +46,15 @@ int alloc_memory(alloc_algorithm algorithm, int proc, int size)
 			break;
 
 		case best_fit: 
-			free_blocks.sort(sort_by_size_asceding);
+			free_blocks.sort(Memory::sort_by_size_asceding);
 			break;
 
 		case worst_fit: 
-			free_blocks.sort(sort_by_size_desceding);
+			free_blocks.sort(Memory::sort_by_size_desceding);
 			break;
 	}
 
 	for(it = free_blocks.begin(); it != free_blocks.end(); ++it) {
-		
 		/* 
 			Search the free_blocks list until the first free block of sufficient size is found.
 			Assign the process to the memory block (generate a used block and insert it into used_blocks list). 
@@ -91,7 +78,6 @@ int alloc_memory(alloc_algorithm algorithm, int proc, int size)
 			}
 			return 0;
 		}
-
 	}
 	
 	return ALLOC_ERROR; //return error if no block of sufficient size is found.
@@ -106,7 +92,7 @@ int alloc_memory(alloc_algorithm algorithm, int proc, int size)
 	Return value:
 		0 is returned if success, FREE_ERROR otherwise.
 */
-int free_memory(int proc)
+int Memory::free_memory(int proc)
 {
 	if (proc <= 0) //invalid process ID
 		return FREE_ERROR;
@@ -138,16 +124,13 @@ int free_memory(int proc)
 	free_blocks.push_back(new_free_block);
 	free_blocks.sort(sort_by_address);	
 	for(list<mem_block>::iterator it = free_blocks.begin(); it != free_blocks.end(); ) {
-
 		list<mem_block>::iterator current = it++;
 		if ((it!=free_blocks.end()) && (current->address + current->size == it->address)) {
 			current->size += it->size;
 			free_blocks.erase(it);
 			it = ++current;
 		}
-
 	}
-
 	return 0;
 }
 
@@ -161,17 +144,55 @@ int free_memory(int proc)
 	Return value:
 		None.
 */
-void init_memory(int size, int start_address)
-{
-	free_blocks.clear();
-	used_blocks.clear();
-
-	mem_block init_block;
-	init_block.address = start_address;
-	init_block.size = size;
-	init_block.proc = -1;
-	free_blocks.push_back(init_block);
-
-	max_memory_size = size;
-	prev_alloc_block = start_address - 1;
+Memory::Memory(int size, int start_address):free_blocks(1, mem_block(start_address, size)), used_blocks(), prev_alloc_block(start_address-1), max_memory_size(size){
 }
+
+/*
+	Generate and return a string representing current memory usage.
+
+	Parameters:
+		None.
+
+	Return value:
+		A string representing current memory usage.
+*/
+string Memory::to_string( )
+{
+	string rt = "";
+	free_blocks.sort(Memory::sort_by_address);
+	used_blocks.sort(Memory::sort_by_address);
+
+	list<mem_block>::iterator free_it = free_blocks.begin();
+	list<mem_block>::iterator used_it = used_blocks.begin();
+	while( (free_it != free_blocks.end()) && (used_it != used_blocks.end()) ) {
+		if( free_it->address < used_it->address) {
+			int tempN = static_cast<int> (((static_cast<float>(free_it->size)) / max_memory_size) * 100);
+			rt += string(tempN, '-');
+			++free_it;
+
+		} else {
+			int tempN = static_cast<int> (((static_cast<float>(used_it->size)) / max_memory_size) * 100);
+			rt += string(tempN, static_cast<char>('A'+ used_it->proc - 1));
+			++used_it;
+		}
+	}
+
+	while(free_it != free_blocks.end()) {
+			int tempN = static_cast<int> (((static_cast<float>(free_it->size)) / max_memory_size) * 100);
+			rt += string(tempN, '-');
+			++free_it;
+	}
+
+	while(used_it != used_blocks.end()) {
+			int tempN = static_cast<int> (((static_cast<float>(used_it->size)) / max_memory_size) * 100);
+			rt += string(tempN, static_cast<char>('A'+ used_it->proc - 1));
+			++used_it;
+	}
+
+	return rt;
+}
+
+
+
+
+
