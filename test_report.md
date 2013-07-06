@@ -18,7 +18,7 @@ max_mem_size = 100, mem_start_address = 0
 
 **Test Result:**<br/>
 * Step 1 results following memory blocks:
-    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/doc/resource/test1_step1.png" />
+    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/resource/test1_step1.png" />
 
 * Now there are four free blocks as follows, and last memory allocation occurs at 69.
 
@@ -31,16 +31,16 @@ max_mem_size = 100, mem_start_address = 0
 
 * Result of step 2:<br/>
     First-fit: choose block 1. (search from 0, the first block larger than 8)
-    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/doc/resource/test1_step2_1.png" />
+    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/resource/test1_step2_1.png" />
 
     Next-fit: choose block 4. (search from 69, the first block larger than 8)
-    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/doc/resource/test1_step2_2.png" />
+    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/resource/test1_step2_2.png" />
     
     Best-fit: choose block 2. (the smallest block larger than 8)
-    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/doc/resource/test1_step2_3.png" />
+    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/resource/test1_step2_3.png" />
     
     Worst-fit: choose block 3. (the largest block larger than 8)
-    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/doc/resource/test1_step2_4.png" />
+    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/resource/test1_step2_4.png" />
     
 **Conclusion**<br/>
 * Best-fit: Choose the smallest free block of sufficient size.
@@ -64,7 +64,7 @@ max_mem_size = 100, mem_start_address = 0
 **Test Result:**<br/>
 * Step 1 results:
     Both best-fit and worst-fit produce following memory usage.
-    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/doc/resource/test2_step1.png" />
+    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/resource/test2_step1.png" />
 
 * Now there are four free blocks as follows, and last memory allocation occurs at 69.
 
@@ -76,10 +76,10 @@ max_mem_size = 100, mem_start_address = 0
 
 * Result of step 2:<br/>
     Fragments produced by best-fit: (3, 4, 2)
-    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/doc/resource/test2_step2_1.png" />
+    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/resource/test2_step2_1.png" />
 
     Fragments produced by worst-fit: (6, 1, 2)
-    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/doc/resource/test2_step2_2.png" />
+    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/resource/test2_step2_2.png" />
     
 **Conclusion**<br/>
 * Best-fit: All remaining holes are too small to be useful.
@@ -101,14 +101,14 @@ max_mem_size = 100, mem_start_address = 0
 **Test Result:**<br/>
 * Step 1 results:
     Both first-fit and next-fit produce following memory usage.
-    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/doc/resource/test3_step1.png" />
+    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/resource/test3_step1.png" />
 
 * Result of step 2:<br/>
     Memory holes produced by first-fit:
-    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/doc/resource/test3_step2_1.png" />
+    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/resource/test3_step2_1.png" />
 
     Memory holes produced by next-fit:
-    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/doc/resource/test3_step2_2.png" />
+    <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/resource/test3_step2_2.png" />
     
 **Conclusion**<br/>
 * First-fit: Tends to fragment the low memory area, leaving larger free block(s) in the end of the memory.
