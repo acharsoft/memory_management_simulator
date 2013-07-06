@@ -6,13 +6,15 @@ Demonstrate the behavior of the four algorithms.
 max_mem_size = 100, mem_start_address = 0
 
 **Test Case:**<br/>
- 1. set up memory environment by following requests:
+* set up memory environment by following requests:<br/>
 
-> alloc 1 8 -> alloc 2 15 -> alloc 3 5 -> alloc 4 10 -> alloc 5 11 -> free 2 -> free 4 -> alloc 6 20 -> alloc 7 18 -> free 6
+    ```no-highlight
+    alloc 1 8 -> alloc 2 15 -> alloc 3 5 -> alloc 4 10 -> alloc 5 11 
+    -> free 2 -> free 4 -> alloc 6 20 -> alloc 7 18 -> free 6
+    ```
+* submit request: <br/>
+    `alloc 8 8`
 
- 2. submit request: 
-
-> alloc 8 8
 
 **Test Result:**<br/>
 * Step 1 results following memory blocks:
@@ -27,7 +29,7 @@ max_mem_size = 100, mem_start_address = 0
     | 3 | 49 | 20 |
     | 4 | 87 | 13 |
 
-* Result of step 2:
+* Result of step 2:<br/>
     First-fit: choose block 1. (search from 0, the first block larger than 8)
     <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/doc/resource/test1_step2_1.png" />
 
@@ -54,13 +56,10 @@ Compare the fragmentation resulted from best-fit and worst-fit.
 max_mem_size = 100, mem_start_address = 0
 
 **Test Case:**<br/>
- 1. set up memory environment by following requests:
-
-> alloc 1 14 -> alloc 2 6 -> alloc 3 16 -> free 2 -> alloc 4 12 -> alloc 5 20 -> free 4 -> alloc 6 14
-
- 2. submit request: 
-
-> alloc 7 3 -> alloc 8 8 -> alloc 9 5 -> alloc 10 6 -> alloc 11 5
+* set up memory environment by following requests:<br/>
+    `alloc 1 14 -> alloc 2 6 -> alloc 3 16 -> free 2 -> alloc 4 12 -> alloc 5 20 -> free 4 -> alloc 6 14`
+* submit request: <br/>
+    `alloc 7 3 -> alloc 8 8 -> alloc 9 5 -> alloc 10 6 -> alloc 11 5`
 
 **Test Result:**<br/>
 * Step 1 results:
@@ -75,7 +74,7 @@ max_mem_size = 100, mem_start_address = 0
     | 2 | 36 | 12 |
     | 3 | 82 | 18 |
 
-* Result of step 2:
+* Result of step 2:<br/>
     Fragments produced by best-fit: (3, 4, 2)
     <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/doc/resource/test2_step2_1.png" />
 
@@ -94,20 +93,17 @@ Compare first-fit with next-fit.
 max_mem_size = 100, mem_start_address = 0
 
 **Test Case:**<br/>
- 1. set up memory environment by following requests:
-
-> alloc 1 12 -> alloc 2 4 -> alloc 3 8 -> alloc 4 15 -> alloc 5 24 -> free 4
-
- 2. submit request: 
-
-> alloc 6 10 -> alloc 7 11 -> free 1 -> alloc 8 6 -> alloc 9 4 -> free 2 -> alloc 10 3
+* set up memory environment by following requests:<br/>
+    `alloc 1 12 -> alloc 2 4 -> alloc 3 8 -> alloc 4 15 -> alloc 5 24 -> free 4`
+* submit request: <br/>
+    `alloc 6 10 -> alloc 7 11 -> free 1 -> alloc 8 6 -> alloc 9 4 -> free 2 -> alloc 10 3`
 
 **Test Result:**<br/>
 * Step 1 results:
     Both first-fit and next-fit produce following memory usage.
     <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/doc/resource/test3_step1.png" />
 
-* Result of step 2:
+* Result of step 2:<br/>
     Memory holes produced by first-fit:
     <img src="https://raw.github.com/ceciliazhou/dynamic_partition_simulator/master/doc/resource/test3_step2_1.png" />
 
